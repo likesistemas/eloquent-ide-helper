@@ -3,10 +3,10 @@
 
 use Like\Eloquent\IdeHelper\Application;
 
-include __DIR__ . '/../laravel-functions.php';
+include __DIR__ . '/../src/laravel-functions.php';
 
 if (! class_exists(Application::class)) {
-	include $_composer_autoload_path ?? __DIR__ . '/../../vendor/autoload.php';
+	include $_composer_autoload_path ?? __DIR__ . '/../vendor/autoload.php';
 }
 
 $app = new Application();
