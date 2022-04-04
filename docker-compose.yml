@@ -14,7 +14,25 @@ services:
       - CODECOMMIT_USER=$CODECOMMIT_USER
       - CODECOMMIT_PASSWORD=$CODECOMMIT_PASSWORD
       - URL_SENTRY=${URL_SENTRY}
+      - DB_HOST=mysql
     volumes:
       - ./:/var/www/public/
+    networks:
+      - github
+    links:
+      - mysql
+    depends_on:
+      - mysql
+
+  mysql:
+    image: ${DB_ENGINE:-mariadb}:${DB_VERSION:-10.4.12}
+    command: --innodb-use-native-aio=0 --character-set-server=latin1 --collation-server=latin1_swedish_ci
+    volumes:
+      - ./.docker/data/${DB_ENGINE:-mariadb}-${DB_VERSION:-10.4.12}/:/var/lib/mysql
+      - ./.docker/sql/:/docker-entrypoint-initdb.d/
+    environment:
+      - MYSQL_DATABASE=${MYSQL_DATABASE:-eloquent}
+      - MYSQL_ROOT_PASSWORD=root
+      - TZ=America/Fortaleza
     networks:
       - github

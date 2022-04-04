@@ -1,0 +1,13 @@
+#!/usr/bin/env php
+<?php
+
+use Like\Eloquent\IdeHelper\Application;
+
+include __DIR__ . '/../laravel-functions.php';
+
+if (! class_exists(Application::class)) {
+	include $_composer_autoload_path ?? __DIR__ . '/../../vendor/autoload.php';
+}
+
+$app = new Application();
+$app->run();
