@@ -1,26 +1,29 @@
 {
-    "name": "likesistemas/nomedalib",
+    "name": "likesistemas/eloquent-ide-helper",
     "type": "library",
-    "description": "Descriçãoo da biblioteca.",
-    "repositories": [
-        {"type": "composer", "url": "https://composer.likesistemas.com.br/"}
-    ],
+    "description": "Using `barryvdh/laravel-ide-helper` without laravel framework.",
     "require": {
-        "php": ">=5.6"
+        "php": ">=5.6",
+        "barryvdh/laravel-ide-helper": "^2.4",
+        "illuminate/filesystem": "^5.4",
+        "illuminate/container": "^5.4",
+        "doctrine/dbal": "^2.5"
     },
     "require-dev": {
-        "phpunit/phpunit": "^5.0 || ^9.0"
+        "phpunit/phpunit": "^5.0 || ^9.0",
+        "likesistemas/eloquent-external": "^1.1"
     },
     "autoload": {
         "psr-4": {
-            "Like\\NomeDaLib\\": "src/"
+            "Like\\Eloquent\\IdeHelper\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Like\\NomeDaLib\\Tests\\": "tests/"
+            "Like\\Eloquent\\IdeHelper\\Tests\\": "tests/"
         }
     },
+    "bin": ["bin/ide-helper"],
     "authors": [
         {
             "name": "Like Sistemas",
@@ -33,5 +36,10 @@
         "fix:ci": "php-cs-fixer fix --dry-run --stop-on-violation",
         "test": "phpunit",
         "analyse": "phpstan analyse"
+    },
+    "config": {
+        "allow-plugins": {
+            "kylekatarnls/update-helper": true
+        }
     }
 }
