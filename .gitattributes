@@ -1,0 +1,3 @@
+* text=auto
+docker-compose.yml eol=lf
+bin/ide-helper text eol=lf
