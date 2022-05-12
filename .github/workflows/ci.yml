@@ -53,3 +53,11 @@ jobs:
         if: matrix.PHP != '56'
         run: |
           docker-compose exec -T php composer fix:ci
+
+      - name: Run Bin with composer
+        run: |
+          docker-compose exec -T php composer ide-helper
+
+      - name: Run Bin directly
+        run: |
+          docker-compose exec -T php bin/ide-helper

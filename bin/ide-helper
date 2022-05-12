@@ -6,7 +6,8 @@ use Like\Eloquent\IdeHelper\Application;
 include __DIR__ . '/../src/laravel-functions.php';
 
 if (! class_exists(Application::class)) {
-	include $_composer_autoload_path ?? __DIR__ . '/../vendor/autoload.php';
+	echo "hhhh";
+	include isset($_composer_autoload_path) ? $_composer_autoload_path : __DIR__ . '/../vendor/autoload.php';
 }
 
 $app = new Application();
