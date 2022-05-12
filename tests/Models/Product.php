@@ -13,12 +13,12 @@ use Illuminate\Database\Eloquent\Model;
  * @property integer|null $reference
  * @property float $price
  * @property-read \Like\Eloquent\IdeHelper\Tests\Models\Subcategory $subcategory
- *
  * @method static \Illuminate\Database\Eloquent\Builder|\Like\Eloquent\IdeHelper\Tests\Models\Product whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Like\Eloquent\IdeHelper\Tests\Models\Product whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Like\Eloquent\IdeHelper\Tests\Models\Product wherePrice($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Like\Eloquent\IdeHelper\Tests\Models\Product whereReference($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Like\Eloquent\IdeHelper\Tests\Models\Product whereSubcategoryId($value)
+ * @mixin \Eloquent
  */
 class Product extends Model {
 	protected $fillable = [];
