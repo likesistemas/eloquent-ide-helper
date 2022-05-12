@@ -9,9 +9,12 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property integer $id
  * @property string $name
- * @method static \Illuminate\Database\Eloquent\Builder|\Like\Eloquent\IdeHelper\Tests\Models\Subcategory whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Like\Eloquent\IdeHelper\Tests\Models\Subcategory whereName($value)
- * @mixin \Eloquent
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|Subcategory newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Subcategory newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Subcategory query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Subcategory whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Subcategory whereName($value)
  */
 class Subcategory extends Model {
 	protected $fillable = [];
