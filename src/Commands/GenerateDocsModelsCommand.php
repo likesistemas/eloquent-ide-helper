@@ -19,12 +19,21 @@ class GenerateDocsModelsCommand extends AbstractCommand {
 		$this->setAliases(['models']);
 	}
 
-	protected function execute(InputInterface $input, OutputInterface $output) {
+	protected function execute(InputInterface $input, OutputInterface $output): int {
 		$this->style->title('Writing documentation to models');
 
 		$fileSystem = new Filesystem();
-		$command = new ModelsCommand($fileSystem);
-		$command->setLaravel(Container::getInstance());
+		$container = Container::getInstance();
+		$config = $container->get('config');
+		
+		// Create the real view factory with minimal dependencies
+		$engineResolver = new \Illuminate\View\Engines\EngineResolver();
+		$finder = new \Illuminate\View\FileViewFinder($fileSystem, []);
+		$dispatcher = new \Illuminate\Events\Dispatcher();
+		$view = new \Illuminate\View\Factory($engineResolver, $finder, $dispatcher);
+		
+		$command = new ModelsCommand($fileSystem, $config, $view);
+		$command->setLaravel($container);
 		return $command->run(
 			new ArrayInput(['--write' => true, '--reset' => true]),
 			new ConsoleOutput()

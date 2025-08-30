@@ -7,7 +7,6 @@ use Illuminate\Support\Arr;
 use RuntimeException;
 
 class Config implements ArrayAccess {
-	
 	/**
 	 * @var array
 	 */
@@ -21,19 +20,19 @@ class Config implements ArrayAccess {
 		return Arr::get($this->config, $key, $defaultVaue);
 	}
 
-	public function offsetExists($offset) {
+	public function offsetExists($offset): bool {
 		throw new RuntimeException('Not implemented because we didn\'t need it yet');
 	}
 
-	public function offsetGet($offset) {
+	public function offsetGet(mixed $offset): mixed {
 		return $this->get($offset);
 	}
 
-	public function offsetSet($offset, $value) {
+	public function offsetSet(mixed $offset, mixed $value): void {
 		throw new RuntimeException('Not implemented because we didn\'t need it yet');
 	}
 
-	public function offsetUnset($offset) {
+	public function offsetUnset(mixed $offset): void {
 		throw new RuntimeException('Not implemented because we didn\'t need it yet');
 	}
 }

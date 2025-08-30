@@ -12,6 +12,8 @@ class Config implements DatabaseConfig {
 	const DB = 'eloquent';
 	const FACTORY_FOLDER = __DIR__ . '/./Factories/';
 	const FAKER_LANGUAGE = 'pt_BR';
+	const CHARSET = 'utf8mb4';
+	const COLLATION = 'utf8mb4_unicode_ci';
 
 	public function getDriver() {
 		return self::DRIVER;
@@ -41,7 +43,15 @@ class Config implements DatabaseConfig {
 		return self::FAKER_LANGUAGE;
 	}
 
-	public function getFakerProviders() {
+	public function getFakerProviders():array {
 		return [];
+	}
+
+	public function getCharset() {
+		return self::CHARSET;
+	}
+
+	public function getCollation() {
+		return self::COLLATION;
 	}
 }

@@ -11,7 +11,6 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
 abstract class AbstractCommand extends Command {
-
 	/**
 	 * @var SymfonyStyle
 	 */
@@ -20,7 +19,7 @@ abstract class AbstractCommand extends Command {
 	public function initialize(InputInterface $input, OutputInterface $output) {
 		$this->style = new SymfonyStyle($input, $output);
 
-		if (! Container::getInstance()->bound('config')) {
+		if (!Container::getInstance()->bound('config')) {
 			$this->loadConfig();
 		}
 	}
@@ -30,13 +29,13 @@ abstract class AbstractCommand extends Command {
 		$filename = 'ide-helper.php';
 		$src = $cwd . $filename;
 
-		if (! file_exists($src)) {
+		if (!file_exists($src)) {
 			throw new LogicException("Config file not found. Filename: {$src}.");
 		}
 
 		$config = include($src);
 
-		if (! $config instanceof Config) {
+		if (!$config instanceof Config) {
 			throw new LogicException("Config not is \Like\Eloquent\IdeHelper\Config.");
 		}
 
