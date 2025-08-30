@@ -9,6 +9,7 @@ return RectorConfig::configure()
         __DIR__ . '/src',
         __DIR__ . '/tests',
     ])
-    ->withTypeCoverageLevel(60)
-    ->withDeadCodeLevel(0)
-    ->withCodeQualityLevel(0);
+    ->withTypeCoverageLevel(53)
+    ->withDeadCodeLevel(51)
+    ->withCodeQualityLevel(74)
+    ->withImportNames();

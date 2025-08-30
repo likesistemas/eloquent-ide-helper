@@ -2,6 +2,7 @@
 
 namespace Like\Eloquent\IdeHelper\Tests\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -12,16 +13,16 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $name
  * @property integer|null $reference
  * @property string $price
- * @property-read \Like\Eloquent\IdeHelper\Tests\Models\Subcategory $subcategory
+ * @property-read Subcategory $subcategory
  *
- * @method static \Illuminate\Database\Eloquent\Builder|Product newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Product newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Product query()
- * @method static \Illuminate\Database\Eloquent\Builder|Product whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Product whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Product wherePrice($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Product whereReference($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Product whereSubcategoryId($value)
+ * @method static Builder|Product newModelQuery()
+ * @method static Builder|Product newQuery()
+ * @method static Builder|Product query()
+ * @method static Builder|Product whereId($value)
+ * @method static Builder|Product whereName($value)
+ * @method static Builder|Product wherePrice($value)
+ * @method static Builder|Product whereReference($value)
+ * @method static Builder|Product whereSubcategoryId($value)
  */
 class Product extends Model {
 	protected $fillable = [];

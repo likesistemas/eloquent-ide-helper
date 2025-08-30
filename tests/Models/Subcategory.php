@@ -2,6 +2,7 @@
 
 namespace Like\Eloquent\IdeHelper\Tests\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -10,11 +11,11 @@ use Illuminate\Database\Eloquent\Model;
  * @property integer $id
  * @property string $name
  *
- * @method static \Illuminate\Database\Eloquent\Builder|Subcategory newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Subcategory newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Subcategory query()
- * @method static \Illuminate\Database\Eloquent\Builder|Subcategory whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Subcategory whereName($value)
+ * @method static Builder|Subcategory newModelQuery()
+ * @method static Builder|Subcategory newQuery()
+ * @method static Builder|Subcategory query()
+ * @method static Builder|Subcategory whereId($value)
+ * @method static Builder|Subcategory whereName($value)
  */
 class Subcategory extends Model {
 	protected $fillable = [];
