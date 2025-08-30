@@ -43,6 +43,10 @@ abstract class AbstractCommand extends Command {
 
 		$this->style->title('Reading configurations...');
 		$this->style->text('Using base path: ' . base_path());
-		$this->style->text('Using models folders: ' . implode(', ', $config['ide-helper.model_locations']));
+		
+		$modelLocations = $config['ide-helper.model_locations'] ?? [];
+		if (is_array($modelLocations)) {
+			$this->style->text('Using models folders: ' . implode(', ', $modelLocations));
+		}
 	}
 }

@@ -6,6 +6,7 @@
 		"eamodio.gitlens",
 		"mhutchie.git-graph",
 		"junstyle.php-cs-fixer",
-		"janbn.git-last-commit-message"
+		"janbn.git-last-commit-message",
+		"seatonjiang.gitmoji-vscode"
     ]
 }

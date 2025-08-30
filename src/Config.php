@@ -17,19 +17,34 @@ class Config implements ArrayAccess {
 		return Arr::get($this->config, $key, $defaultVaue);
 	}
 
+	/**
+	 * @param mixed $offset
+	 */
 	public function offsetExists($offset): bool {
 		throw new RuntimeException('Not implemented because we didn\'t need it yet');
 	}
 
-	public function offsetGet(mixed $offset): mixed {
+	/**
+	 * @param mixed $offset
+	 *
+	 * @return mixed
+	 */
+	public function offsetGet($offset) {
 		return $this->get($offset);
 	}
 
-	public function offsetSet(mixed $offset, mixed $value): void {
+	/**
+	 * @param mixed $offset
+	 * @param mixed $value
+	 */
+	public function offsetSet($offset, $value): void {
 		throw new RuntimeException('Not implemented because we didn\'t need it yet');
 	}
 
-	public function offsetUnset(mixed $offset): void {
+	/**
+	 * @param mixed $offset
+	 */
+	public function offsetUnset($offset): void {
 		throw new RuntimeException('Not implemented because we didn\'t need it yet');
 	}
 }
