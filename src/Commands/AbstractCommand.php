@@ -16,7 +16,7 @@ abstract class AbstractCommand extends Command {
 	 */
 	protected $style;
 
-	public function initialize(InputInterface $input, OutputInterface $output) {
+	public function initialize(InputInterface $input, OutputInterface $output): void {
 		$this->style = new SymfonyStyle($input, $output);
 
 		if (!Container::getInstance()->bound('config')) {
@@ -24,7 +24,7 @@ abstract class AbstractCommand extends Command {
 		}
 	}
 
-	private function loadConfig() {
+	private function loadConfig(): void {
 		$cwd = getcwd() . DIRECTORY_SEPARATOR;
 		$filename = 'ide-helper.php';
 		$src = $cwd . $filename;
@@ -43,6 +43,6 @@ abstract class AbstractCommand extends Command {
 
 		$this->style->title('Reading configurations...');
 		$this->style->text('Using base path: ' . base_path());
-		$this->style->text('Using models folders: ' . join(', ', $config['ide-helper.model_locations']));
+		$this->style->text('Using models folders: ' . implode(', ', $config['ide-helper.model_locations']));
 	}
 }

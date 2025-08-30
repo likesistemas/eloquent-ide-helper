@@ -15,7 +15,7 @@ class GenerateDocsModelsCommand extends AbstractCommand {
 		parent::__construct('generate-docs-models');
 	}
 
-	public function configure() {
+	public function configure(): void {
 		$this->setAliases(['models']);
 	}
 
