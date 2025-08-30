@@ -1,6 +1,10 @@
+includes:
+	- phpstan-baseline.neon
+
 parameters:
 	level: 5
 	paths:
 		- src
 		- tests
+	phpVersion: 70400
 	reportUnmatchedIgnoredErrors: false

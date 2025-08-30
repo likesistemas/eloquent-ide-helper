@@ -30,7 +30,7 @@ class Config implements ArrayAccess {
 	 * @return mixed
 	 */
 	public function offsetGet($offset) {
-		return $this->get($offset);
+		return $this->config[$offset] ?? null;
 	}
 
 	/**
