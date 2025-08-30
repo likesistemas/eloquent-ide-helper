@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - name: Prepare code
         env:
@@ -28,31 +28,31 @@ jobs:
 
       - name: Prepare environment
         run: |
-          docker-compose up -d
+          docker compose up -d
           echo $(docker run -t --network github jwilder/dockerize -wait tcp://php:9000 -timeout 120s)
-          docker-compose ps
-          docker-compose logs php
+          docker compose ps
+          docker compose logs php
 
-      - name: Install PHP Stan
+      - name: Run Lint
         run: |
-          docker-compose exec -T php composer require phpstan/phpstan --dev
+          docker compose exec -T php composer lint
 
       - name: Run PHP Unit
         run: |
-          docker-compose exec -T php composer test
+          docker compose exec -T php composer test
 
       - name: Run PHP Stan
         run: |
-          docker-compose exec -T php composer analyse
+          docker compose exec -T php composer analyse
 
       - name: Run PHP CS Fixer
         run: |
-          docker-compose exec -T php composer fix:ci
+          docker compose exec -T php composer fix:ci
 
       - name: Run Bin with composer
         run: |
-          docker-compose exec -T php composer ide-helper
+          docker compose exec -T php composer ide-helper
 
       - name: Run Bin directly
         run: |
-          docker-compose exec -T php bin/ide-helper
+          docker compose exec -T php bin/ide-helper
