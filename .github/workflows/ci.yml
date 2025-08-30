@@ -12,7 +12,7 @@ jobs:
   test:
     strategy:
       matrix:
-        PHP: [56, 73, 74, 80]
+        PHP: [74, 80, 81, 82, 83]
     runs-on: ubuntu-latest
 
     steps:
@@ -23,8 +23,6 @@ jobs:
           PHP_VERSION: ${{ matrix.PHP }}
         run: |
           touch .env
-          echo "CODECOMMIT_USER=${{ secrets.CODECOMMIT_USER }}" >> .env
-          echo "CODECOMMIT_PASSWORD=${{ secrets.CODECOMMIT_PASSWORD }}" >> .env
           echo "GITHUB_TOKEN=${{ secrets.GH_TOKEN }}" >> .env
           echo "PHP_VERSION=$PHP_VERSION" >> .env
 
@@ -36,7 +34,6 @@ jobs:
           docker-compose logs php
 
       - name: Install PHP Stan
-        if: matrix.PHP != '56'
         run: |
           docker-compose exec -T php composer require phpstan/phpstan --dev
 
@@ -45,12 +42,10 @@ jobs:
           docker-compose exec -T php composer test
 
       - name: Run PHP Stan
-        if: matrix.PHP != '56'
         run: |
           docker-compose exec -T php composer analyse
 
       - name: Run PHP CS Fixer
-        if: matrix.PHP != '56'
         run: |
           docker-compose exec -T php composer fix:ci
 

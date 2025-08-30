@@ -7,20 +7,15 @@ networks:
 services:
 
   php:
-    image: likesistemas/php-dev:${PHP_VERSION:-56}
+    image: likesistemas/php-dev:${PHP_VERSION:-74}
     environment:
-      - CODECOMMIT_HOST=git-codecommit.us-east-1.amazonaws.com
       - GITHUB_TOKEN=$GITHUB_TOKEN
-      - CODECOMMIT_USER=$CODECOMMIT_USER
-      - CODECOMMIT_PASSWORD=$CODECOMMIT_PASSWORD
       - URL_SENTRY=${URL_SENTRY}
       - DB_HOST=mysql
     volumes:
       - ./:/var/www/public/
     networks:
       - github
-    links:
-      - mysql
     depends_on:
       - mysql
 
