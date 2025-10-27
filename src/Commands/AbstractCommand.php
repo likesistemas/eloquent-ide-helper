@@ -11,32 +11,31 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
 abstract class AbstractCommand extends Command {
-
 	/**
 	 * @var SymfonyStyle
 	 */
 	protected $style;
 
-	public function initialize(InputInterface $input, OutputInterface $output) {
+	public function initialize(InputInterface $input, OutputInterface $output): void {
 		$this->style = new SymfonyStyle($input, $output);
 
-		if (! Container::getInstance()->bound('config')) {
+		if (!Container::getInstance()->bound('config')) {
 			$this->loadConfig();
 		}
 	}
 
-	private function loadConfig() {
+	private function loadConfig(): void {
 		$cwd = getcwd() . DIRECTORY_SEPARATOR;
 		$filename = 'ide-helper.php';
 		$src = $cwd . $filename;
 
-		if (! file_exists($src)) {
+		if (!file_exists($src)) {
 			throw new LogicException("Config file not found. Filename: {$src}.");
 		}
 
 		$config = include($src);
 
-		if (! $config instanceof Config) {
+		if (!$config instanceof Config) {
 			throw new LogicException("Config not is \Like\Eloquent\IdeHelper\Config.");
 		}
 
@@ -44,6 +43,10 @@ abstract class AbstractCommand extends Command {
 
 		$this->style->title('Reading configurations...');
 		$this->style->text('Using base path: ' . base_path());
-		$this->style->text('Using models folders: ' . join(', ', $config['ide-helper.model_locations']));
+		
+		$modelLocations = $config['ide-helper.model_locations'] ?? [];
+		if (is_array($modelLocations)) {
+			$this->style->text('Using models folders: ' . implode(', ', $modelLocations));
+		}
 	}
 }

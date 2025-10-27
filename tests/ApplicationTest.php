@@ -6,7 +6,7 @@ use Like\Eloquent\IdeHelper\Application;
 use PHPUnit\Framework\TestCase;
 
 class ApplicationTest extends TestCase {
-	public function testInstance() {
+	public function testInstance(): void {
 		$this->assertInstanceOf(Application::class, new Application());
 	}
 }
