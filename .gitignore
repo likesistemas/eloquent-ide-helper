@@ -6,6 +6,4 @@ desktop.ini
 composer.lock
 tests/phpunit.*.xml
 .phpunit.result.cache
-.php_cs.cache
-.php-cs-fixer.cache
 .docker/data/

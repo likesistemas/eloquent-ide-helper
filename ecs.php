@@ -12,6 +12,7 @@ use Symplify\EasyCodingStandard\ValueObject\Set\SetList;
 return ECSConfig::configure()
 	->withPaths([
 		__DIR__ . '/src',
+		__DIR__ . '/tests',
 	])
 	->withSets([SetList::PSR_12])
 	->withSpacing(Option::INDENTATION_TAB, PHP_EOL)

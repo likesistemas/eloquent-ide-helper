@@ -43,7 +43,7 @@ class Config implements DatabaseConfig {
 		return self::FAKER_LANGUAGE;
 	}
 
-	public function getFakerProviders():array {
+	public function getFakerProviders(): array {
 		return [];
 	}
 
