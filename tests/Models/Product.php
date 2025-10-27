@@ -13,8 +13,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $name
  * @property integer|null $reference
  * @property string $price
- * @property-read Subcategory $subcategory
- *
+ * @property-read \Like\Eloquent\IdeHelper\Tests\Models\Subcategory|null $subcategory
  * @method static Builder|Product newModelQuery()
  * @method static Builder|Product newQuery()
  * @method static Builder|Product query()
@@ -23,6 +22,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static Builder|Product wherePrice($value)
  * @method static Builder|Product whereReference($value)
  * @method static Builder|Product whereSubcategoryId($value)
+ * @mixin \Eloquent
  */
 class Product extends Model {
 	protected $fillable = [];
